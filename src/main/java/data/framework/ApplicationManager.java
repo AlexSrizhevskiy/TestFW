@@ -3,6 +3,7 @@ package data.framework;
 import org.openqa.selenium.*;
 
 public class ApplicationManager {
+	private NavigationHelper helper;
     private WebDriverHelper webDriverHelper;
     private GroupHelper groupHelper;
     private ContactHelper contactHelper;
@@ -12,7 +13,6 @@ public class ApplicationManager {
     public ApplicationManager() {
         webDriverHelper = new WebDriverHelper();
         driver = webDriverHelper.getDriver();
-        //groupHelper = new GroupHelper();
     }
 
     public void stop() {
@@ -20,11 +20,17 @@ public class ApplicationManager {
     }
 
     public GroupHelper getGroupHelper() {
+		if (groupHelper == null){
+			groupHelper = new GroupHelper();
+		}
         return groupHelper;
     }
 
 
     public ContactHelper getContactHelper() {
+		if (contactHelper == null){
+			contactHelper = new ContactHelper();
+		}
         return contactHelper;
     }
 

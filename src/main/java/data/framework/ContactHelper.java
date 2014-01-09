@@ -3,32 +3,28 @@ package data.framework;
 import data.objects.ContactObjects;
 
 public class ContactHelper {
-
-    private NavigationHelper manager;
-
-    public ContactHelper(NavigationHelper manager) {
-        this.manager = manager;
-    }
+    private NavigationHelper helper;
 
     public void createContact(ContactObjects contactObject) {
-        manager.openAddNewContactPage();
+		helper = new NavigationHelper();
+        helper.openAddNewContactPage();
         fillContactForm(contactObject);
-        manager.clickByText("submit");
-        manager.clickByLinkText("home");
+        helper.clickByText("submit");
+        helper.clickByLinkText("home");
     }
 
     public void fillContactForm(ContactObjects contactObject) {
-        manager.inputValue("firstname", contactObject.firstName);
-        manager.inputValue("lastname", contactObject.lastName);
-        manager.inputValue("address", contactObject.address);
-        manager.inputValue("home", contactObject.homeTelNum);
-        manager.inputValue("mobile", contactObject.mobileTelNum);
-        manager.inputValue("work", contactObject.workTelNum);
-        manager.inputValue("email", contactObject.email);
-        manager.inputValue("email2", contactObject.emailSecondary);
-        manager.select("bday", "3");
-        manager.select("bmonth", "February");
-        manager.inputValue("byear", "1939");
+        helper.inputValue("firstname", contactObject.firstName);
+        helper.inputValue("lastname", contactObject.lastName);
+        helper.inputValue("address", contactObject.address);
+        helper.inputValue("home", contactObject.homeTelNum);
+        helper.inputValue("mobile", contactObject.mobileTelNum);
+        helper.inputValue("work", contactObject.workTelNum);
+        helper.inputValue("email", contactObject.email);
+        helper.inputValue("email2", contactObject.emailSecondary);
+        helper.select("bday", "3");
+        helper.select("bmonth", "February");
+        helper.inputValue("byear", "1939");
         //new Select(findElementByName("new_group")).selectByVisibleText("12");
     }
 }

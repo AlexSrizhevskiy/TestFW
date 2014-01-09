@@ -3,33 +3,29 @@ package data.framework;
 import data.objects.GroupObjects;
 
 public class GroupHelper {
-
-    private NavigationHelper manager;
-
-    public GroupHelper(NavigationHelper manager) {
-        this.manager = manager;
-    }
+    private NavigationHelper helper;
 
     public void createGroup(GroupObjects groupObject) {
-        manager.openMainPage();
-        manager.openGroupTab();
+		helper = new NavigationHelper();
+        helper.openMainPage();
+        helper.openGroupTab();
         createNewGroup();
         fillGroupForm(groupObject);
         submitGroupCreation();
-        manager.openGroupTab();
+        helper.openGroupTab();
     }
 
     public void fillGroupForm(GroupObjects groupObjects) {
-        manager.inputValue("group_name", groupObjects.nameGroup);
-        manager.inputValue("group_header", groupObjects.headerGroup);
-        manager.inputValue("group_footer", groupObjects.footerGroup);
+        helper.inputValue("group_name", groupObjects.nameGroup);
+        helper.inputValue("group_header", groupObjects.headerGroup);
+        helper.inputValue("group_footer", groupObjects.footerGroup);
     }
 
     public void createNewGroup() {
-        manager.clickByText("new");
+        helper.clickByText("new");
     }
 
     public void submitGroupCreation() {
-        manager.clickByText("submit");
+        helper.clickByText("submit");
     }
 }
